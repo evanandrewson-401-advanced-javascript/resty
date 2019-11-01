@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import URLinput from './URLinput';
+import MainContainer from '../containers/MainContainer';
 
 const App = () => {
   return (
     <>
       <Header />
+      <MainContainer />
       <Footer />
-      <URLinput />
     </>
   );
 };

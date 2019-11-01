@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 
-class Buttons extends Component {
-  state {
+// class Buttons extends Component {
+//   state {
 
-  }
+//   }
 
-  render() {
-    return (
+//   render() {
+//     return (
 
-    );
-  }
-};
+//     );
+//   }
+// };
 
-export default Buttons;
+// export default Buttons;
