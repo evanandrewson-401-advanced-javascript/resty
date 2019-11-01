@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import goFetch from '../services/fetch';
 
+// goFetch(this.state.url, this.state.method, this.state.jsonBody)
+
 export default class MainContainer extends Component {
 
   state = {
@@ -9,28 +11,34 @@ export default class MainContainer extends Component {
     username: 'Username',
     password: 'Password',
     bearerToken: 'Bearer Token',
-    method: ''
+    method: 'GET'
   }
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
   }
 
-  updateMethod = () => {
-    this.setState({ method: 'hello' });
+  updateMethod = ({ target }) => {
+    this.setState({ method: target.name });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    goFetch(this.state.url, this.state.method, this.state.jsonBody)
+      .then(result => console.log(result));
   }
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input type="string" name="url" value={this.state.url} onChange={this.handleChange}></input>
         <section>
-          <button name="get" onClick={this.updateMethod}>GET</button>
-          <button name="post" onClick={this.updateMethod}>POST</button>
-          <button name="put" onClick={this.updateMethod}>PUT</button>
-          <button name="patch" onClick={this.updateMethod}>PATCH</button>
-          <button name="delete" onClick={this.updateMethod}>DELETE</button>
-          <button onSubmit={() => goFetch(this.state.url, this.state.method, this.state.jsonBody)}>Go!</button>
+          <button type="button" name="get" onClick={this.updateMethod}>GET</button>
+          <button type="button" name="post" onClick={this.updateMethod}>POST</button>
+          <button type="button" name="put" onClick={this.updateMethod}>PUT</button>
+          <button type="button" name="patch" onClick={this.updateMethod}>PATCH</button>
+          <button type="button" name="delete" onClick={this.updateMethod}>DELETE</button>
+          <button >Go!</button>
         </section>
         <input type="string" name="jsonBody" value={this.state.jsonBody} onChange={this.handleChange}></input>
         <section>
