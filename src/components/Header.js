@@ -2,7 +2,9 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <header>RESTy</header>
+    <>
+      <header>RESTy</header>
+    </>
   );
 };
 
