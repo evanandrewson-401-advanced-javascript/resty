@@ -1,5 +1,5 @@
 const goFetch = (url, method, body) => {
-  if(method === 'GET' || method === 'DELETE') {
+  if(method === 'get' || method === 'delete') {
     return fetch(url, {
       method
     })
