@@ -40,4 +40,8 @@
         font-size: 18px;
         margin-left: 1em;
     }
+
+    .selected {
+        background-color: blue;
+    }
 }

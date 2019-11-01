@@ -19,6 +19,7 @@ export default class MainContainer extends Component {
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
+    this.className.add(styles.selected);
   }
 
   updateMethod = ({ target }) => {
