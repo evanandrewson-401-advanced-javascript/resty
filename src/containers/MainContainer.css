@@ -1,0 +1,19 @@
+.MainContainer {
+    display: flex;
+
+    .history {
+        width: 30vw;
+        margin: 1em;
+    }
+
+    .flex {
+        display: flex;
+        width: 70vw;
+        margin: 1em;
+    }
+
+    .URLinput {
+        width: 70vw;
+        margin: 1em;
+    }
+}
