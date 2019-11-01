@@ -16,7 +16,7 @@ export default class MainContainer extends Component {
     this.setState({ [target.name]: target.value });
   }
 
-  updateMethod = ({ target }) => {
+  updateMethod = () => {
     this.setState({ method: 'hello' });
   }
 
