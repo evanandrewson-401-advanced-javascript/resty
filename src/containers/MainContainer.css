@@ -1,9 +1,14 @@
 .MainContainer {
     display: flex;
+    background-color: lightgray;
 
     .history {
         width: 30vw;
         margin: 1em;
+        font-family: arial;
+        h1 {
+            font-size: 18px;
+        }
     }
 
     .flex {
@@ -15,5 +20,24 @@
     .URLinput {
         width: 70vw;
         margin: 1em;
+    }
+
+    .regularButton {
+        padding: 10px;
+        border: none;
+        margin-left: 1em;
+        text-transform: uppercase;
+        background-color: lightgray;
+        font-size: 18px;
+
+    }
+    
+    .regularButton:hover {
+        background-color: gray;
+    }
+
+    .goButton {
+        font-size: 18px;
+        margin-left: 1em;
     }
 }
