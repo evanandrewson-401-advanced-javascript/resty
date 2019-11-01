@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import goFetch from '../services/fetch';
+import Display from '../components/Display';
 
 // goFetch(this.state.url, this.state.method, this.state.jsonBody)
 
@@ -11,7 +12,8 @@ export default class MainContainer extends Component {
     username: 'Username',
     password: 'Password',
     bearerToken: 'Bearer Token',
-    method: 'GET'
+    method: 'GET',
+    display: '{}'
   }
 
   handleChange = ({ target }) => {
@@ -25,7 +27,7 @@ export default class MainContainer extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     goFetch(this.state.url, this.state.method, this.state.jsonBody)
-      .then(result => console.log(result));
+      .then(result => this.setState({ display: JSON.stringify(result, null, "\t") }));
   }
 
   render() {
@@ -49,6 +51,7 @@ export default class MainContainer extends Component {
           <p>Bearer Token</p>
           <input type="string" name="bearerToken" value={this.state.bearerToken} onChange={this.handleChange}></input>
         </section>
+        <Display data={this.state.display} />
       </form>
     )
   }
