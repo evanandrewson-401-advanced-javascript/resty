@@ -1,0 +1,12 @@
+.Header {
+    height: 75px;
+    background-color: navy;
+    color: white;
+    font-family: arial;
+    font-size: 2em;
+    font-weight: 700;
+    width: 100vw;
+    line-height: 2.4em;
+    padding-left: 1em;
+    font-weight: 700;
+}
