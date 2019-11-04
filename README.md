@@ -3,7 +3,7 @@
 
 ## Submission Links
 * [GitHub] (https://github.com/evanandrewson-401-advanced-javascript/resty/pull/1)
-* [Travis] ()
+* [Travis] (https://travis-ci.com/evanandrewson-401-advanced-javascript/resty)
 
 ## Instructions: 
 * Match the design and overall functionality
