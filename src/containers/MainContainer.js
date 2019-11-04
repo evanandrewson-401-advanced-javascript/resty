@@ -14,8 +14,9 @@ export default class MainContainer extends Component {
     bearerToken: 'Bearer Token',
     method: '',
     display: '{}',
-    history: []
-    
+    history: [],
+    disabled: false
+
   }
 
   handleChange = ({ target }) => {
@@ -23,8 +24,16 @@ export default class MainContainer extends Component {
     this.className.add(styles.selected);
   }
 
-  updateMethod = ({ target }) => {
-    this.setState({ method: target.name });
+  // updateMethod = ({ target }) => {
+  //   this.setState({ method: target.name });
+  // }
+  
+  updateAndDisable = ({ target }) => {
+    this.setState({ method: target.name, disabled: true })
+  }
+
+  updateAndReenable = ({ target }) => {
+    this.setState({ method: target.name, disabled: false })
   }
 
   handleSubmit = (e) => {
@@ -51,15 +60,15 @@ export default class MainContainer extends Component {
         <form onSubmit={this.handleSubmit}>
           <input className={styles.URLinput} type="string" name="url" value={this.state.url} onChange={this.handleChange}></input>
           <section>
-            <button className={styles.regularButton} type="button" name="get" onClick={this.updateMethod}>GET</button>
-            <button className={styles.regularButton} type="button" name="post" onClick={this.updateMethod}>POST</button>
-            <button className={styles.regularButton} type="button" name="put" onClick={this.updateMethod}>PUT</button>
-            <button className={styles.regularButton} type="button" name="patch" onClick={this.updateMethod}>PATCH</button>
-            <button className={styles.regularButton} type="button" name="delete" onClick={this.updateMethod}>DELETE</button>
+            <button className={styles.regularButton} type="button" name="get" onClick={this.updateAndDisable}>GET</button>
+            <button className={styles.regularButton} type="button" name="post" onClick={this.updateAndReenable}>POST</button>
+            <button className={styles.regularButton} type="button" name="put" onClick={this.updateAndReenable}>PUT</button>
+            <button className={styles.regularButton} type="button" name="patch" onClick={this.updateAndReenable}>PATCH</button>
+            <button className={styles.regularButton} type="button" name="delete" onClick={this.updateAndDisable}>DELETE</button>
             <button className={styles.goButton}>Go!</button>
           </section>
           <div className={styles.flex}>
-            <input type="string" name="jsonBody" value={this.state.jsonBody} onChange={this.handleChange}></input>
+            <input type="string" name="jsonBody" disabled={this.state.disabled} value={this.state.jsonBody} onChange={this.handleChange}></input>
             <section>
               <button>Headers</button>
               <p>Basic Authorization</p>
