@@ -13,20 +13,15 @@ export default class MainContainer extends Component {
     password: 'Password',
     bearerToken: 'Bearer Token',
     method: '',
-    display: '{}',
+    display: 'hello',
     history: [],
     disabled: false
-
   }
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
     this.className.add(styles.selected);
   }
-
-  // updateMethod = ({ target }) => {
-  //   this.setState({ method: target.name });
-  // }
   
   updateAndDisable = ({ target }) => {
     this.setState({ method: target.name, disabled: true })
@@ -68,17 +63,17 @@ export default class MainContainer extends Component {
             <button className={styles.goButton}>Go!</button>
           </section>
           <div className={styles.flex}>
-            <input type="string" name="jsonBody" disabled={this.state.disabled} value={this.state.jsonBody} onChange={this.handleChange}></input>
-            <section>
-              <button>Headers</button>
+            <input type="string" name="jsonBody" className={styles.jsonBody} disabled={this.state.disabled} value={this.state.jsonBody} onChange={this.handleChange}></input>
+            <section className={styles.authSection}>
+              <button className={styles.headerButton}>Headers</button>
               <p>Basic Authorization</p>
               <input type="string" name="username" value={this.state.username} onChange={this.handleChange}></input>
               <input type="string" name="password" value={this.state.password} onChange={this.handleChange}></input>
               <p>Bearer Token</p>
-              <input type="string" name="bearerToken" value={this.state.bearerToken} onChange={this.handleChange}></input>
+              <input type="string" name="bearerToken" className={styles.bearerToken} value={this.state.bearerToken} onChange={this.handleChange}></input>
             </section>
           </div>
-          <Display data={this.state.display} />
+          {this.state.display && <Display data={this.state.display} />}
         </form>
       </div>
     )

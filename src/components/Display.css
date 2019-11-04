@@ -1,0 +1,7 @@
+.Display {
+  
+  border: 1px solid gray;
+  height: 50vh;
+  overflow: scroll;
+
+}

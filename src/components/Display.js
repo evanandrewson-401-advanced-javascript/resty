@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Display.css'
 
 const Display = ({ data }) => {
   return (
-    <div>
+    <div className={styles.Display}>
       {data}
     </div>
   )

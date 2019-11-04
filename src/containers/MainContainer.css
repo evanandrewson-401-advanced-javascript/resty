@@ -44,4 +44,31 @@
         font-size: 18px;
         margin-left: 1em;
     }
+
+    .jsonBody {
+        width: 50%;
+    }
+
+    .authSection {
+        width: 50%;
+        margin-left: 1em;
+    }
+
+    .headerButton {
+        width: 100%;
+    }
+
+    p {
+        font-family: arial;
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    .bearerToken {
+        width: 100%;
+    }
+
+    input {
+        border-radius: 3px;
+    }
 }
