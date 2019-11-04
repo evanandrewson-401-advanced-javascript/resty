@@ -29,19 +29,19 @@
         text-transform: uppercase;
         background-color: lightgray;
         font-size: 18px;
-
     }
+
     
     .regularButton:hover {
         background-color: gray;
     }
-
+    
+    .regularButton:focus {
+        background-color: blue;
+    }
+    
     .goButton {
         font-size: 18px;
         margin-left: 1em;
-    }
-
-    .selected {
-        background-color: blue;
     }
 }

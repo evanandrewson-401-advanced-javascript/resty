@@ -15,6 +15,7 @@ export default class MainContainer extends Component {
     method: '',
     display: '{}',
     history: []
+    
   }
 
   handleChange = ({ target }) => {
