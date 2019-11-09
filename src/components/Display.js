@@ -4,9 +4,9 @@ import styles from './Display.css'
 
 const Display = ({ data }) => {
   return (
-    <div className={styles.Display}>
+    <pre className={styles.Display}>
       {data}
-    </div>
+    </pre>
   )
 }
 

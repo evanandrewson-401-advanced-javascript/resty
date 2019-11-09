@@ -19,41 +19,41 @@ const formReducer = (state, action) => {
   }
 }
 
+const methodReducer = (state, action) => {
+  switch(action.type) {
+    case 'get':
+      return { method: action.payload, disabled: true };
+    case 'delete':
+      return { method: action.payload, disabled: true };
+    default:
+      return { method: action.payload, disabled: false }
+  }
+}
+
 const MainContainer = () => {
-  // const [url, updateUrl] = useState('url');
-  // const [jsonBody, updateJsonBody] = useState('Raw JSON Body');
-  // const [username, updateUsername] = useState('Username');
-  // const [password, updatePassword] = useState('Password');
-  const [method, updateMethod] = useState('');
   const [display, updateDisplay] = useState('');
   const [history, updateHistory] = useState([]);
-  const [disabled, updateDisabled] = useState(false);
   const [formData, dispatchFormData] = useReducer(formReducer, { url: 'url', jsonBody: 'Raw JSON Body', username: 'Username', password: 'Password'});
+  const [{method, disabled}, dispatchMethod] = useReducer(methodReducer, { method: '', disabled: false});
 
   const handleChange = ({ target }) => {
     dispatchFormData({ type: target.name, payload: target.value });
   }
-  
-  const updateAndDisable = ({ target }) => {
-    this.setState({ method: target.name, disabled: true })
-  }
 
-  const updateAndReenable = ({ target }) => {
-    this.setState({ method: target.name, disabled: false })
+  const methodChangerAndDisabledToggler = ({ target}) => {
+    dispatchMethod({ type: target.name, payload: target.name })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    goFetch(this.state.url, this.state.method, this.state.jsonBody)
-      .then(result => this.setState(state => {
-    return {
-      display: JSON.stringify(result, null, "\t"),
-      history: state.history.concat({
-        method: this.state.method,
-        url: this.state.url
-      })
-    }
-  }))
+    goFetch(formData.url, method, formData.jsonBody)
+      .then(result => {
+        updateDisplay(JSON.stringify(result, null, "\t"));
+        updateHistory(history => history.concat({
+          method: method,
+          url: formData.url
+        }))
+      });
   }
 
   return (
@@ -65,11 +65,11 @@ const MainContainer = () => {
       <form onSubmit={handleSubmit}>
         <input className={styles.URLinput} type="string" name="url" value={formData.url} onChange={handleChange}></input>
         <section>
-          <button className={styles.regularButton} type="button" name="get" onClick={updateAndDisable}>GET</button>
-          <button className={styles.regularButton} type="button" name="post" onClick={updateAndReenable}>POST</button>
-          <button className={styles.regularButton} type="button" name="put" onClick={updateAndReenable}>PUT</button>
-          <button className={styles.regularButton} type="button" name="patch" onClick={updateAndReenable}>PATCH</button>
-          <button className={styles.regularButton} type="button" name="delete" onClick={updateAndDisable}>DELETE</button>
+          <button className={styles.regularButton} type="button" name="get" onClick={methodChangerAndDisabledToggler}>GET</button>
+          <button className={styles.regularButton} type="button" name="post" onClick={methodChangerAndDisabledToggler}>POST</button>
+          <button className={styles.regularButton} type="button" name="put" onClick={methodChangerAndDisabledToggler}>PUT</button>
+          <button className={styles.regularButton} type="button" name="patch" onClick={methodChangerAndDisabledToggler}>PATCH</button>
+          <button className={styles.regularButton} type="button" name="delete" onClick={methodChangerAndDisabledToggler}>DELETE</button>
           <button className={styles.goButton}>Go!</button>
         </section>
         <div className={styles.flex}>
@@ -83,7 +83,7 @@ const MainContainer = () => {
             <input type="string" name="bearerToken" className={styles.bearerToken} value={formData.bearerToken} onChange={handleChange}></input>
           </section>
         </div>
-        {display && <Display data={display} />}
+        <Display data={display} />
       </form>
     </div>
   )
